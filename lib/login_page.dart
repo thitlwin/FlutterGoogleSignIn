@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth_prj/sign_in_with_phone.dart';
 
 import 'first_screen.dart';
 import 'sign_in.dart';
@@ -19,9 +20,11 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FlutterLogo(size: 150),
+              FlutterLogo(size: 100),
               SizedBox(height: 50),
               _signInButton(),
+              SizedBox(height: 50),
+              _phoneNumberSignInButton(),
             ],
           ),
         ),
@@ -59,6 +62,48 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.only(left: 10),
               child: Text(
                 'Sign in with Google',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.grey,
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _phoneNumberSignInButton() {
+    return OutlineButton(
+      splashColor: Colors.grey,
+      onPressed: () {
+        signInWithPhone('+959797259586', context);
+        // signInWithGoogle().then((result) {
+        //   if (result != null) {
+        //     Navigator.of(context).push(
+        //       MaterialPageRoute(
+        //         builder: (context) {
+        //           return FirstScreen();
+        //         },
+        //       ),
+        //     );
+        //   }
+        // });
+      },
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+      highlightElevation: 0,
+      borderSide: BorderSide(color: Colors.grey),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(
+                'Sign in with Phone Number',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.grey,
